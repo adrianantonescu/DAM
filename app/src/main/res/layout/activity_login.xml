@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradient"
+    android:gravity="center">
+
+    <ImageView
+        android:foregroundGravity="center"
+        android:id="@+id/start_page_image_login"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginEnd="147dp"
+        app:srcCompat="@drawable/loginhead"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/activity_login_loginPhoto_content_desc"
+        />
+
+    <EditText
+        android:gravity="center"
+        android:id="@+id/et_username"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/start_page_image_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawableRight="@drawable/ic_action_username"
+        android:hint="@string/et_hint_username"
+        android:textAlignment="viewStart"
+        android:inputType="textPersonName"
+        android:drawableEnd="@drawable/ic_action_username"
+        android:importantForAutofill="no"
+        tools:ignore="UnusedAttribute" />
+
+    <EditText
+        android:gravity="center"
+        android:id="@+id/et_password"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/et_username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textAlignment="viewStart"
+        android:background="@drawable/rounded_edittext"
+        android:drawableRight="@drawable/ic_action_password"
+        android:hint="@string/et_hint_password"
+        android:inputType="textPassword"
+        android:drawableEnd="@drawable/ic_action_password"
+        android:importantForAutofill="no"
+        tools:ignore="UnusedAttribute" />
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:id="@+id/cv_login"-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_below="@id/et_password"-->
+        <!--android:layout_marginTop="35dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+
+
+
+        <!--app:cardBackgroundColor="#b93f3f"-->
+        <!--app:cardCornerRadius="25dp">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_above="@+id/cv_login">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="Login"-->
+                <!--android:textColor="#FFFFFF"-->
+                <!--android:textSize="20dp" />-->
+        <!--</RelativeLayout>-->
+    <!--</android.support.v7.widget.CardView>-->
+
+    <TextView
+        android:id="@+id/tv_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@id/btn_login"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/tv_forgot_password"
+        android:textColor="#FFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/rounded_edittext"
+        android:backgroundTint="#b93f3f"
+        android:text="@string/btn_login_text"
+        android:textColor="#FFFFFF"
+        tools:ignore="UnusedAttribute" />
+
+
+</RelativeLayout>

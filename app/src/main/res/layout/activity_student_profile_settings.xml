@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentProfileSettingsActivity"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/gradient">
+
+    <TextView
+        android:id="@+id/student_settings_tv_settings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="@string/student_settings_tv_settings_text"
+        android:textColor="@color/backgroundColor"
+        android:textSize="30sp"
+        app:fontFamily="@font/galada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/student_settings_cv_change_password"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_settings_tv_settings">
+
+        <TextView
+            android:id="@+id/student_settings_cv_tv_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/student_settings_cv_change_pas_text"
+            android:textAllCaps="false"
+            android:textColor="@color/backgroundColor"
+            android:textSize="20sp"
+            app:fontFamily="@font/didact_gothic" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/student_settings_cv_edit_profile"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_settings_cv_change_password">
+
+        <TextView
+            android:id="@+id/student_settings_cv_tv_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/student_settings_cv_tv_edit_profile_txt"
+            android:textColor="@color/backgroundColor"
+            android:textSize="20sp"
+            app:fontFamily="@font/didact_gothic" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/student_settings_cv_logout"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_settings_cv_edit_profile">
+
+        <TextView
+            android:id="@+id/student_settings_cv_tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/student_settings_cv_tv_logout_txt"
+            android:textColor="@color/backgroundColor"
+            android:textSize="20sp"
+            app:fontFamily="@font/didact_gothic" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/student_settings_cv_cancel"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_settings_cv_logout">
+
+        <TextView
+            android:id="@+id/student_settings_cv_tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/student_settings_cv_tv_cancel_txt"
+            android:textColor="@color/backgroundColor"
+            android:textSize="20sp"
+            app:fontFamily="@font/didact_gothic" />
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

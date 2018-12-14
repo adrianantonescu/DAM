@@ -1,0 +1,186 @@
+<resources>
+    <string name="app_name">Q&amp;A</string>
+    <string name="et_hint_username">Username</string>
+    <string name="et_hint_password">Password</string>
+    <string name="tv_forgot_password">Forgot password?</string>
+    <string name="btn_student_text">Student</string>
+    <string name="btn_profesor_text">Teacher</string>
+    <string name="btn_login_text">Login</string>
+    <string name="tv_add_quiz">Add quiz</string>
+    <string name="tv_add_quiz2">Start a new quiz session.</string>
+    <string name="tv_join_session">Join</string>
+    <string name="join_quiz_session">Join quiz session.</string>
+    <string name="tv_user_statistics">Statistics</string>
+    <string name="tv_user_statistics2">User\'s answers statistics.</string>
+    <string name="tv_user_feedback">Feedback</string>
+    <string name="tv_user_feedback2">Send feedback to your teacher.</string>
+    <string name="tv_profile_user">Profile</string>
+    <string name="tv_profile_user2">Check your profile.</string>
+    <string name="tv_profile_teacher">Profile</string>
+    <string name="tv_profile_teacher2">Check your profile.</string>
+    <string name="tv_add_student">Add student</string>
+    <string name="tv_add_student2">Add a student.</string>
+    <string name="tv_teacher_feedback2">Send your feedback to a group of students.</string>
+    <string name="tv_teacher_more">More</string>
+    <string name="tv_teacher_more2">More options.</string>
+    <string name="tv_student_gradebook">Gradebook</string>
+    <string name="tv_student_gradebook2">Check your gradebook.</string>
+    <string name="change_pass_btn_save_text">Save new password</string>
+    <string name="change_pass_et_confirm_password_hint">Confirm New Password</string>
+    <string name="change_pass_et_new_pass_hint">New Password</string>
+    <string name="change_pass_tv_title_text">Change Password</string>
+    <string name="student_settings_change_pass_schimbare_parola_text">Parola a fost schimbata cu succes!</string>
+    <string name="student_settings_change_pass_eroare_schimbare_parola_text">Parolele introduse nu coincid! Reintroduceti noua parola!</string>
+    <string name="student_profile_image_settings">Settings</string>
+    <string name="student_profile_image_content_description">imagine student</string>
+    <string name="student_profile_tv_nume_hint">First Name + Last Name</string>
+    <string name="student_profile_tv_username_hint"> \@username</string>
+    <string name="student_profile_tv_bio_hint">Bio</string>
+    <string name="student_profile_tv_bio_original_text">Student \n Change the bio in settings</string>
+    <string name="student_profile_tv_grupa_txt">Group</string>
+    <string name="student_profile_tv_serie_txt">Series</string>
+    <string name="student_profile_tv_an_txt">Year</string>
+    <string name="student_profile_btn_back">Back to main page</string>
+    <string name="student_settings_tv_settings_text">Settings</string>
+    <string name="student_settings_cv_change_pas_text">Change Password</string>
+    <string name="student_settings_cv_tv_edit_profile_txt">Edit Profile</string>
+    <string name="student_settings_cv_tv_logout_txt">Log out</string>
+    <string name="student_settings_cv_tv_cancel_txt">Cancel</string>
+    <string name="numeSignUp">Name</string>
+    <string name="usernameSignUp">Username</string>
+    <string name="inregistrareSignUp">Register</string>
+    <string name="anSignUp">Year</string>
+    <string name="serieSignUp">Series</string>
+    <string name="grupaSignUp">Group</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="grupaSignUpHint">Group</string>
+    <string name="serieSignUpHint">Series</string>
+    <string name="anSignUpHint">Year</string>
+    <string name="usernameSignUpHint">Username</string>
+    <string name="nume_si_prenumeSignUp">Name</string>
+    <string name="parolaSignUpHint">Password</string>
+    <string name="parolaSignUp">Password</string>
+    <string name="numeFeedback">Name</string>
+    <string name="numeFeedbackHint">Name</string>
+    <string name="mesajul_tau">Your message</string>
+    <string name="trimite_feedback">Send</string>
+    <string name="email">Email</string>
+    <string name="reset_password">Reset password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="message">Message</string>
+    <string name="feedback">Feedback</string>
+    <string name="statistics">Statistics</string>
+    <string name="my_grades">My grades</string>
+    <string name="activity_edit_profile_title_edit_profile">Edit Profile</string>
+    <string name="edit_profile_cv_tv_change_profile_picture">Change profile picture</string>
+    <string name="edit_profile_image_content_desc">student\'s profile picture</string>
+    <string name="edit_profile_tv_change_picture_txt">Change profile picture</string>
+    <string name="edit_profile_tv_first_name_txt">First Name</string>
+    <string name="edit_profile_tv_last_name_txt">Last Name</string>
+    <string name="edit_profile_tv_bio_txt">Bio</string>
+    <string name="edit_profile_btn_save_txt">Save Changes</string>
+    <string name="change_bio_title_txt">Change Bio</string>
+    <string name="start_page_back_press_txt">Press Home to exit app</string>
+    <string name="student_profile_settings_logout_message">You logged out with success</string>
+    <string name="teacher_profile_photo_content_description">imagine profesor</string>
+    <string name="teacher_profile_tv_bio_original_text">Teacher \n Change the bio in settings</string>
+    <string name="teacher_profile_settings_tv_change_profile_picture_txt">Change Profile Picture</string>
+    <string name="teacher_profile_settings_tv_change_bio_txt">Change Bio</string>
+    <string name="teacher_profile_settings_tv_logout_txt">Log out</string>
+    <string name="teacher_profile_settings_tv_cancel_txt">Cancel</string>
+    <string name="activity_start_about_image_content_desc">info about</string>
+    <string name="start_page_tv_about_txt">About</string>
+    <string name="about_tv_title_about_txt">About</string>
+    <string name="about_tv_app_title_txt"><![CDATA[Q&A App]]></string>
+    <string name="about_tv_team_txt">Team: \n Alexe Andreea-Rebeca \n Andreescu Andreea-Cristina \n Antonescu Adrian-Gabriel \n Arhip Georgiana \n Aron Alin-Costin</string>
+    <string name="about_tv_grupa_txt">Group 1065</string>
+    <string name="about_tv_an_txt">2018</string>
+    <string name="change_bio_write_bio_txt">Write your bio</string>
+    <string name="change_bio_updated_bio_msg">Updated Bio</string>
+    <string name="edit_profile_updated_profile_msg">Profile has been updated</string>
+    <string name="edit_profile_enter_info_msg">Enter your info</string>
+    <string name="teacher_profile_settings_pic_updated_msg">Profile picture has been updated</string>
+    <string name="activity_login_loginPhoto_content_desc">loginPhoto</string>
+
+    <string name="add_question_tv_text">Add a question</string>
+    <string name="add_question_button_text">Select</string>
+
+    <string-array name="add_question_subjects">
+        <item>Algebra</item>
+        <item>Statistics</item>
+        <item>Economy</item>
+        <item>BCO</item>
+        <item>BTI</item>
+        <item>BPC</item>
+    </string-array>
+    <string-array name="add_question_categories">
+        <item>Simple answer question</item>
+        <item>Multiple answer question</item>
+        <item>Short open question</item>
+    </string-array>
+    <string name="title_activity_add_open_answer_question">AddOpenAnswerQuestionActivity</string>
+    <string name="add_simple_question_btn_save">Save</string>
+    <string name="add_simple_question_tv_header">Simple answer question</string>
+    <string name="add_simple_question_tv_question_text">Question Text</string>
+    <string name="add_simple_question_te_a_hint">a.</string>
+    <string name="add_simple_question_te_b_hint">b.</string>
+    <string name="add_simple_question_te_c_hint">c.</string>
+    <string name="add_simple_question_te_d_hint">d.</string>
+    <string name="add_simple_question_tv_options">Options</string>
+    <string name="add_simple_question_rb_text_a">a.</string>
+    <string name="add_simple_question_rb_text_b">b.</string>
+    <string name="add_simple_question_rb_text_c">c.</string>
+    <string name="add_simple_question_rb_d_text">d.</string>
+    <string name="add_multiple_question_tv_header">Add Multiple Question</string>
+    <string name="add_multiple_question_btn_save">Save</string>
+    <string name="add_multiple_question_tv_question_text">Question Text</string>
+    <string name="add_multiple_question_te_a_hint">a.</string>
+    <string name="add_multiple_question_te_b_hint">b.</string>
+    <string name="add_multiple_question_te_c_hint">c.</string>
+    <string name="add_multiple_question_te_d_hint">d.</string>
+    <string name="add_multiple_question_tv_options">Options</string>
+    <string name="add_multiple_question_rb_a_text">a.</string>
+    <string name="add_multiple_question_rb_b_text">b.</string>
+    <string name="add_multiple_question_rb_c_text">c.</string>
+    <string name="add_multiple_question_rb_d_text">d.</string>
+    <string name="add_open_question_tv_banner_text">Add open question</string>
+    <string name="add_open_question_tv_question_text">Question text</string>
+    <string name="add_open_question_tid_question_text_hint">Question text</string>
+    <string name="add_open_question_tid_question_answer_hint">Answer</string>
+    <string name="add_open_question_button_text">Save</string>
+
+    <string name="tv_more_options_text">More options</string>
+    <string name="btn_report_application_bug">Report application bug</string>
+    <string name="tv_describe_bug">Describe your bug here</string>
+    <string name="btn_submit_report">Submit</string>
+    <string name="login_error_inset_username">Insert username here.</string>
+    <string name="login_error_insert_password">Insert password here.</string>
+    <string name="cybernetics">Cybernetics</string>
+    <string name="informatics">Informatics</string>
+    <string name="view_statistics">View Statistics</string>
+    <string name="username_error">Insert username here.</string>
+    <string name="password_error">Insert password here.</string>
+
+    <string name="lv_teacher_statistics_subject_txt">Subject</string>
+    <string name="lv_teacher_statistics_group_txt">Group</string>
+    <string name="v_teacher_statistics_year_txt">Year</string>
+    <string name="lv_teacher_statistics_series_txt">Series</string>
+    <string name="add_simple_question_error1">Please submit a question text!</string>
+    <string name="add_simple_question_error2">Please submit this answer!</string>
+    <string name="add_simple_question_error3">Please choose an answer!</string>
+
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="specialization">Specialization</string>
+    <string name="et_firstname">Enter first name!</string>
+    <string name="et_lastname">Enter last name!</string>
+    <string name="et_username">Enter username!</string>
+    <string name="et_password">Enter password!</string>
+    <string name="toast_register">Student registered successfully!</string>
+    <string name="feedback_sent">Message sent successfully!</string>
+    <string name="feedback_name">Enter your name!</string>
+    <string name="feedback_message">Enter your message!</string>
+    <string name="statistics_ratecompleted">Rate of students having completed the test</string>
+    <string name="back_to_home">Back to home</string>
+
+</resources>

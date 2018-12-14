@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReportBugActivity"
+    android:background="@drawable/gradient"
+    >
+    <TextView
+        android:id="@+id/tv_report_app_bug_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Please submit your report"
+        android:fontFamily="@font/galada"
+        android:textColor="@color/backgroundColor"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_name_report_bug"
+        android:layout_width="258dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="@string/numeFeedbackHint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_report_app_bug_title"
+        />
+    <TextView
+        android:id="@+id/tv_name_report"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/numeFeedback"
+        android:textColor="#FFFF"
+        android:textSize="18sp"
+        app:fontFamily="@font/didact_gothic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_report_app_bug_title"/>
+    <TextView
+        android:id="@+id/tv_bug_message"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/tv_describe_bug"
+        android:textColor="#FFFF"
+        android:textSize="25sp"
+        app:fontFamily="@font/didact_gothic"
+        app:layout_constraintTop_toTopOf="@id/et_name_report_bug"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/edt_describe_bug"
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="@string/mesajul_tau"
+        android:inputType="text"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bug_message"
+        android:gravity="start" />
+
+    <Button
+        android:id="@+id/btn_submit_bug_report"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/btn_submit_report"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_describe_bug"
+        android:background="@drawable/rounded_edittext"
+        android:backgroundTint="@color/buttonsColor"
+        android:textColor="#FFFFFF"/>
+
+
+</android.support.constraint.ConstraintLayout>
