@@ -182,5 +182,10 @@
     <string name="feedback_message">Enter your message!</string>
     <string name="statistics_ratecompleted">Rate of students having completed the test</string>
     <string name="back_to_home">Back to home</string>
+    <string name="et_specialization">Enter specialization!</string>
+    <string name="et_year">Enter year!</string>
+    <string name="et_series">Enter series!</string>
+    <string name="et_group">Enter group!</string>
+    <string name="et_email">Enter email!</string>
 
 </resources>
