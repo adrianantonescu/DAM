@@ -2,6 +2,7 @@ package com.example.adrianantonescu.qa.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -9,6 +10,10 @@ import com.example.adrianantonescu.qa.network.Stud;
 import com.example.adrianantonescu.qa.util.Course;
 import com.example.adrianantonescu.qa.util.Student;
 import com.example.adrianantonescu.qa.util.Teacher;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class DatabaseRepository implements DatabaseConstants {
     private SQLiteDatabase database;
@@ -134,5 +139,47 @@ public class DatabaseRepository implements DatabaseConstants {
         return contentValues;
     }
 
+    public List<Student> findAllStudents(){
+        List<Student> studenti = new ArrayList<>();
+        Cursor cursor = database.query(STUDENT_PROFILE_TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
 
+
+        while (cursor.moveToNext()) {
+            Long id = cursor.getLong(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_ID));
+            String username = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_USERNAME));
+            String password = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_PASSWORD));
+            String firstName = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_LAST_NAME));
+            String email = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_EMAIL));
+            String spec = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_SPECIALIZATION));
+            Integer year = cursor.getInt(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_YEAR));
+            String series = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_SERIES));
+            Integer group = cursor.getInt(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_GROUP));
+            String bio = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_BIO));
+
+            Cursor cursor1 = database.query(STUDENT_SCORES_TABLE_NAME, null, STUDENT_SCORES_COLUMN_STUDENT_ID +"=?",
+                    new String[]{id.toString()}, null, null, null);
+            HashMap<Long, Integer> note = new HashMap<Long, Integer>();
+
+            while (cursor1.moveToNext()) {
+                Long courseID = cursor1.getLong(cursor1.getColumnIndex(STUDENT_SCORES_COLUMN_COURSE_ID));
+                Integer points = cursor1.getInt(cursor1.getColumnIndex(STUDENT_SCORES_COLUMN_POINTS));
+                note.put(courseID, points);
+            }
+            cursor1.close();
+
+            Student student = new Student(id, username, password, firstName, lastName, email, bio,  spec, year, series, group, note);
+            studenti.add(student);
+
+        }
+        cursor.close();
+
+        return studenti;
+    }
 }
