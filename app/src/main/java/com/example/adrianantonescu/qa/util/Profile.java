@@ -9,8 +9,10 @@ public abstract class Profile {
     private String email;
     private String bio;
 
-    public Profile(Long id, String username, String password, String firstName, String lastName, String email, String bio) {
-        this.id = id;
+    private static Long numberOfInstances = 0L;
+
+    public Profile(String username, String password, String firstName, String lastName, String email, String bio) {
+        this.id = ++ Profile.numberOfInstances;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -21,10 +23,6 @@ public abstract class Profile {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {

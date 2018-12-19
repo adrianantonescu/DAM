@@ -1,5 +1,6 @@
 package com.example.adrianantonescu.qa;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.adrianantonescu.qa.database.DatabaseRepository;
+import com.example.adrianantonescu.qa.util.Student;
 
 public class SignUp extends AppCompatActivity {
 
@@ -20,6 +24,8 @@ public class SignUp extends AppCompatActivity {
     private EditText etSeries;
     private EditText etGroup;
     private EditText etEmail;
+
+    private DatabaseRepository databaseRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class SignUp extends AppCompatActivity {
         etEmail = findViewById(R.id.sign_up_et_email);
         signUpButton = findViewById(R.id.sign_up_btn_sign_up);
         signUpButton.setOnClickListener(startTeacherHome());
+        databaseRepository = new DatabaseRepository(getApplicationContext());
     }
 
 
@@ -53,12 +60,30 @@ public class SignUp extends AppCompatActivity {
         return true;
     }
 
+
+
     private View.OnClickListener startTeacherHome() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isValid()) {
                     Intent i = new Intent(getApplicationContext(), TeacherHomeActivity.class);
+                    databaseRepository.open();
+                    String firstname = etFirstName.getText().toString();
+                    String lastname = etLastName.getText().toString();
+                    String username = etUsername.getText().toString();
+                    String password = etPassword.getText().toString();
+                    String specialization = etSpecialization.getText().toString();
+                    int year = Integer.parseInt(etYear.getText().toString());
+                    String series = etSeries.getText().toString();
+                    int group = Integer.parseInt(etGroup.getText().toString());
+                    String email = etEmail.getText().toString();
+                    Student student = new Student(username, password, firstname, lastname,
+                            email, "", specialization, year, series, group);
+                    Toast.makeText(getApplicationContext(), student.toString(), Toast.LENGTH_LONG).show();
+                    databaseRepository.insertStudent(student);
+                    databaseRepository.close();
+
                     Toast.makeText(getApplicationContext(), getString(R.string.toast_register), Toast.LENGTH_LONG).show();
                     startActivity(i);
                 } else {
