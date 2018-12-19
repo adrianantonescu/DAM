@@ -8,15 +8,14 @@ public class Student extends Profile {
     private int year;
     private String series;
     private int group;
-    HashMap<Long, Integer> note;
+    HashMap<Long, Integer> note = new HashMap<>();
 
-    public Student(Long id, String username, String password, String firstName, String lastName, String email, String bio, String specialization, int year, String series, int group, HashMap<Long, Integer> note) {
-        super(id, username, password, firstName, lastName, email, bio);
+    public Student(String username, String password, String firstName, String lastName, String email, String bio, String specialization, int year, String series, int group) {
+        super(username, password, firstName, lastName, email, bio);
         this.specialization = specialization;
         this.year = year;
         this.series = series;
         this.group = group;
-        this.note = note;
     }
 
     public String getSpecialization() {

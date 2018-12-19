@@ -43,7 +43,7 @@ public class DatabaseRepository implements DatabaseConstants {
 
     //DML pentru tabela STUDENT_PROFILE
 
-    public long inserStudent(Student student){
+    public long insertStudent(Student student){
         if (student == null) {
             return -1;
         }
@@ -68,7 +68,7 @@ public class DatabaseRepository implements DatabaseConstants {
                 new String[]{student.getId().toString()});
     }
 
-    //DML pentru tabela TEACHER_PROFILE
+    //DML pentru tabela
 
     public int updateTeacher(Teacher teacher){
         if (teacher == null) {
@@ -87,7 +87,7 @@ public class DatabaseRepository implements DatabaseConstants {
         return database.insert(COURSES_TABLE_NAME, null, createContentValuesFromCourses(course));
     }
 
-    private ContentValues createContentValuesFromStudentProfile(Student student){
+    public ContentValues createContentValuesFromStudentProfile(Student student){
         if (student == null) {
             return null;
         }
@@ -139,6 +139,37 @@ public class DatabaseRepository implements DatabaseConstants {
         return contentValues;
     }
 
+    public int queryStudentForLogin(String username, String password) {
+        String queryString = "SELECT " + STUDENT_PROFILE_COLUMN_USERNAME + ", "
+                + STUDENT_PROFILE_COLUMN_PASSWORD + " FROM " + STUDENT_PROFILE_TABLE_NAME
+                + " WHERE username = ?";
+
+        Cursor cursor = database.rawQuery(queryString, new String[]{username});
+        cursor.moveToFirst();
+        String usernameDb = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_USERNAME));
+        String passwordDb = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_PASSWORD));
+        cursor.close();
+        if(usernameDb.equals(username) && passwordDb.equals(password)) {
+            return -1;
+        }
+        return 0;
+    }
+
+    public int queryTeacherForLogin(String username, String password) {
+        String queryString  = "SELECT " + TEACHER_PROFILE_USERNAME +", "
+                + TEACHER_PROFILE_PASSWORD + " FROM " + TEACHER_PROFILE_TABLE_NAME
+                + " WHERE username = ?";
+        Cursor cursor = database.rawQuery(queryString, new String[] {username});
+        cursor.moveToFirst();
+        String usernameDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_USERNAME));
+        String passwordDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_PASSWORD));
+        cursor.close();
+        if(usernameDb.equals(username) && passwordDb.equals(password)) {
+            return -1;
+        }
+        return 0;
+    }
+
     public List<Student> findAllStudents(){
         List<Student> studenti = new ArrayList<>();
         Cursor cursor = database.query(STUDENT_PROFILE_TABLE_NAME,
@@ -174,7 +205,8 @@ public class DatabaseRepository implements DatabaseConstants {
             }
             cursor1.close();
 
-            Student student = new Student(id, username, password, firstName, lastName, email, bio,  spec, year, series, group, note);
+            Student student = new Student(username, password, firstName, lastName, email, bio,  spec, year, series, group);
+            student.setNote(note);
             studenti.add(student);
 
         }
