@@ -187,5 +187,7 @@
     <string name="et_series">Enter series!</string>
     <string name="et_group">Enter group!</string>
     <string name="et_email">Enter email!</string>
+    <string name="login_shared_succes">Datele au fost salvate!</string>
+    <string name="login_shared_error">Date nu au fost salvate!</string>
 
 </resources>
