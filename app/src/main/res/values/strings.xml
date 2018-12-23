@@ -197,5 +197,6 @@
     <string name="students_report_save_error">Error at saving!</string>
     <string name="login_shared_succes">Datele au fost salvate!</string>
     <string name="login_shared_error">Date nu au fost salvate!</string>
+    <string name="btn_teachers_report">Teachers report</string>
 
 </resources>
