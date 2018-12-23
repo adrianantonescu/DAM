@@ -187,6 +187,12 @@
     <string name="et_series">Enter series!</string>
     <string name="et_group">Enter group!</string>
     <string name="et_email">Enter email!</string>
+
+    <string name="student_settings_cv_tv_list_teachers_txt">List teachers</string>
+    <string name="list_teachers_tv_teachers">Teachers</string>
+    <string name="tv_lv_teach_no_id">No id</string>
+    <string name="tv_lv_no_first_name">No first name</string>
+
     <string name="students_report_students_grade">Students grades</string>
     <string name="btn_view_students">View Students</string>
     <string name="students_report_save">Save to file</string>
@@ -197,6 +203,13 @@
     <string name="students_report_save_error">Error at saving!</string>
     <string name="login_shared_succes">Datele au fost salvate!</string>
     <string name="login_shared_error">Date nu au fost salvate!</string>
+
     <string name="btn_teachers_report">Teachers report</string>
+
+    <string name="student_settings_cv_tv_list_teachers_txt">List teachers</string>
+    <string name="list_teachers_tv_teachers">Teachers</string>
+    <string name="tv_lv_teach_no_id">No id</string>
+    <string name="tv_lv_no_first_name">No first name</string>
+
 
 </resources>
