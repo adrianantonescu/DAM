@@ -41,10 +41,6 @@ public class StudentsReportActivity extends AppCompatActivity {
 
 
     private void init() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//            != PackageManager.PERMISSION_GRANTED) {
-//            requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
-//        }
         listView = findViewById(R.id.students_report_lv);
         btnSaveFile = findViewById(R.id.btn_save_report_file);
         btnSaveFile.setOnClickListener(saveReport());
