@@ -195,5 +195,7 @@
     <string name="student_report_saved_to_file">Saved to file!</string>
     <string name="student_report_filename">studentreport.txt</string>
     <string name="students_report_save_error">Error at saving!</string>
+    <string name="login_shared_succes">Datele au fost salvate!</string>
+    <string name="login_shared_error">Date nu au fost salvate!</string>
 
 </resources>
