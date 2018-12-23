@@ -13,6 +13,7 @@ public class HomeActivity extends AppCompatActivity {
     CardView cvGradebook;
     CardView cvStatistics;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

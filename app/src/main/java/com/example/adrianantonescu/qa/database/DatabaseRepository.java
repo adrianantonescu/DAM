@@ -236,6 +236,8 @@ public class DatabaseRepository implements DatabaseConstants {
         return 1;
     }
 
+
+
     public List<Student> findAllStudents(){
         List<Student> studenti = new ArrayList<>();
         Cursor cursor = database.query(STUDENT_PROFILE_TABLE_NAME,
