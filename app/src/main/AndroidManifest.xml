@@ -100,7 +100,10 @@
         <activity
             android:name=".TeacherStatisticsMoreActivity"
             android:screenOrientation="portrait" />
+
         <activity android:name=".ListTeachers"></activity>
+
+        <activity android:name=".StudentsReportActivity"></activity>
     </application>
 
 </manifest>

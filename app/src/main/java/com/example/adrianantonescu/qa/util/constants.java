@@ -12,4 +12,9 @@ public interface constants {
     String INFO_EC_KEY="newInformatics";
     String CIBE_KEY="newCybernetics";
     String STAT_KEY="newStatistics";
+
+    String LOGIN_PREF_FILE_NAME = "loginPref";
+
+    String LOGIN_USERNAME_PREF = "loginUsernamePref";
+    String LOGIN_PASSWORD_PREF = "loginPasswordPref";
 }

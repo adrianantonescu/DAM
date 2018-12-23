@@ -1,5 +1,7 @@
 package com.example.adrianantonescu.qa.util;
 
+import android.os.Parcelable;
+
 public abstract class Profile {
     private Long id;
     private String username;
@@ -9,8 +11,7 @@ public abstract class Profile {
     private String email;
     private String bio;
 
-    public Profile(Long id, String username, String password, String firstName, String lastName, String email, String bio) {
-        this.id = id;
+    public Profile(String username, String password, String firstName, String lastName, String email, String bio) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -23,9 +24,7 @@ public abstract class Profile {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
     public String getUsername() {
         return username;
@@ -87,4 +86,6 @@ public abstract class Profile {
                 ", bio='" + bio + '\'' +
                 '}';
     }
+
+
 }

@@ -8,12 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.adrianantonescu.qa.database.DatabaseRepository;
+import com.example.adrianantonescu.qa.util.InitializeDbHelper;
+
 public class LoginProfesorActivity extends AppCompatActivity {
 
     private Button btnLogin;
     private TextView tvForgot;
     private EditText edtUsername;
     private EditText edtPassword;
+
+    private DatabaseRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,9 @@ public class LoginProfesorActivity extends AppCompatActivity {
         tvForgot.setOnClickListener(startForgot());
         edtUsername = findViewById(R.id.et_username_profesor);
         edtPassword = findViewById(R.id.et_password_profesor);
+        repository = new DatabaseRepository(getApplicationContext());
+//        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
+//        initializeDb.insertInDb();
     }
 
     private boolean isValid(){

@@ -31,6 +31,15 @@ public class DatabaseRepository implements DatabaseConstants {
         }
     }
 
+
+    //    /**
+//     * insert dummy teacher/student for log in
+//     */
+//    private long insertAdmin() {
+//        Teacher teacher = new Teacher("admin1", "admin",
+//                "asdf", "dfgh", "sdjflksdfjlskdflsjd@ase.ro", "bio bio");
+//        return database.insert(TEACHER_PROFILE_TABLE_NAME, null, createContentValuesFromTeacherProfile(teacher));
+//    }
     public void close(){
         try{
             database.close();
@@ -40,10 +49,9 @@ public class DatabaseRepository implements DatabaseConstants {
     }
 
 
-
     //DML pentru tabela STUDENT_PROFILE
 
-    public long inserStudent(Student student){
+    public long insertStudent(Student student){
         if (student == null) {
             return -1;
         }
@@ -68,7 +76,7 @@ public class DatabaseRepository implements DatabaseConstants {
                 new String[]{student.getId().toString()});
     }
 
-    //DML pentru tabela TEACHER_PROFILE
+    //DML pentru tabela
 
     public int updateTeacher(Teacher teacher){
         if (teacher == null) {
@@ -76,6 +84,13 @@ public class DatabaseRepository implements DatabaseConstants {
         }
         return database.update(TEACHER_PROFILE_TABLE_NAME, createContentValuesFromTeacherProfile(teacher),
                 TEACHER_PROFILE_COLUMN_ID + "=?", new String[]{teacher.getId().toString()});
+    }
+
+    public long insertTeacher(Teacher teacher){
+        if (teacher == null) {
+            return -1;
+        }
+        return database.insert(TEACHER_PROFILE_TABLE_NAME, null, createContentValuesFromTeacherProfile(teacher));
     }
 
     //DML pentru tabela COURSES
@@ -87,7 +102,54 @@ public class DatabaseRepository implements DatabaseConstants {
         return database.insert(COURSES_TABLE_NAME, null, createContentValuesFromCourses(course));
     }
 
-    private ContentValues createContentValuesFromStudentProfile(Student student){
+    //DML pentru tabela STUDENTSCORES
+    public long insertStudentScore(Student student, Course course, int points) {
+        if(student == null || course == null) {
+            return -1;
+        }
+        return database.insert(STUDENT_SCORES_TABLE_NAME, null,
+                createContentValuesFromStudentCourse(student, course, points));
+    }
+
+    //DML PENTRU TABELA DISTRIBUTION
+    public long insertDistribution(Teacher teacher, Course course) {
+        if(teacher == null || course == null) {
+            return -1;
+        }
+        return database.insert(DISTRIBUTION_TABLE_NAME, null,
+                createContentValuesFromTeacherCourse(teacher, course));
+    }
+
+    private ContentValues createContentValuesFromTeacherCourse(Teacher teacher, Course course) {
+        if(teacher == null || course == null) {
+            return null;
+        }
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DISTRIBUTION_COLUMN_ID, 0);
+        contentValues.put(DISTRIBUTION_COLUMN_TEACHER_ID, teacher.getId());
+        contentValues.put(DISTRIBUTION_COLUMN_COURSE_ID, course.getId());
+
+        return contentValues;
+    }
+
+    private ContentValues createContentValuesFromStudentCourse(Student student, Course course, int points) {
+        if(student == null || course == null) {
+            return null;
+        }
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(STUDENT_SCORES_COLUMN_ID, 0);
+        contentValues.put(STUDENT_SCORES_COLUMN_STUDENT_ID, student.getId());
+        contentValues.put(STUDENT_SCORES_COLUMN_COURSE_ID, course.getId());
+        contentValues.put(STUDENT_SCORES_COLUMN_POINTS, points);
+
+        return contentValues;
+    }
+
+    public ContentValues createContentValuesFromStudentProfile(Student student){
         if (student == null) {
             return null;
         }
@@ -139,6 +201,43 @@ public class DatabaseRepository implements DatabaseConstants {
         return contentValues;
     }
 
+    public int queryStudentForLogin(String username, String password) {
+        String queryString = "SELECT " + STUDENT_PROFILE_COLUMN_USERNAME + ", "
+                + STUDENT_PROFILE_COLUMN_PASSWORD + " FROM " + STUDENT_PROFILE_TABLE_NAME
+                + " WHERE username = ?";
+
+        Cursor cursor = database.rawQuery(queryString, new String[]{username});
+        if(!cursor.isNull(0)) {
+            cursor.moveToFirst();
+            String usernameDb = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_USERNAME));
+            String passwordDb = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_PASSWORD));
+            cursor.close();
+            if (usernameDb.equals(username) && passwordDb.equals(password)) {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+        return 1;
+    }
+
+    public int queryTeacherForLogin(String username, String password) {
+        String queryString  = "SELECT " + TEACHER_PROFILE_USERNAME +", "
+                + TEACHER_PROFILE_PASSWORD + " FROM " + TEACHER_PROFILE_TABLE_NAME
+                + " WHERE username = ?";
+        Cursor cursor = database.rawQuery(queryString, new String[] {username});
+        cursor.moveToFirst();
+        String usernameDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_USERNAME));
+        String passwordDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_PASSWORD));
+        cursor.close();
+        if(usernameDb.equals(username) && passwordDb.equals(password)) {
+            return -1;
+        }
+        return 1;
+    }
+
+
+
     public List<Student> findAllStudents(){
         List<Student> studenti = new ArrayList<>();
         Cursor cursor = database.query(STUDENT_PROFILE_TABLE_NAME,
@@ -174,7 +273,8 @@ public class DatabaseRepository implements DatabaseConstants {
             }
             cursor1.close();
 
-            Student student = new Student(id, username, password, firstName, lastName, email, bio,  spec, year, series, group, note);
+            Student student = new Student(username, password, firstName, lastName, email, bio,  spec, year, series, group);
+            student.setNote(note);
             studenti.add(student);
 
         }

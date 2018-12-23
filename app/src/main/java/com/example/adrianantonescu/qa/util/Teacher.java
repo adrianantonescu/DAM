@@ -6,9 +6,8 @@ public class Teacher extends Profile {
 
     private Course[] courses;
 
-    public Teacher(Long id, String username, String password, String firstName, String lastName, String email, String bio, Course[] courses) {
-        super(id, username, password, firstName, lastName, email, bio);
-        this.courses = courses;
+    public Teacher(String username, String password, String firstName, String lastName, String email, String bio) {
+        super(username, password, firstName, lastName, email, bio);
     }
 
     public Course[] getCourses() {
