@@ -301,6 +301,7 @@ public class DatabaseRepository implements DatabaseConstants {
             Teacher teacher = new Teacher(null, null, firstName, lastName, email, null);
             teacher.setId(id);
             profesori.add(teacher);
+            profesori.add(new Teacher(null, null, firstName, lastName, email, null));
         }
         cursor.close();
         return profesori;
