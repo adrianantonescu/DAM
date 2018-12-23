@@ -79,9 +79,8 @@
             android:textSize="20sp"
             app:fontFamily="@font/didact_gothic" />
     </android.support.v7.widget.CardView>
-
     <android.support.v7.widget.CardView
-        android:id="@+id/student_settings_cv_logout"
+        android:id="@+id/student_settings_cv_list_teachers"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="30dp"
@@ -97,6 +96,32 @@
         app:layout_constraintTop_toBottomOf="@+id/student_settings_cv_edit_profile">
 
         <TextView
+            android:id="@+id/student_settings_cv_tv_show_list_teachers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/student_settings_cv_tv_list_teachers_txt"
+            android:textColor="@color/backgroundColor"
+            android:textSize="20sp"
+            app:fontFamily="@font/didact_gothic" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/student_settings_cv_logout"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_settings_cv_list_teachers">
+
+        <TextView
             android:id="@+id/student_settings_cv_tv_logout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -105,6 +130,8 @@
             android:textSize="20sp"
             app:fontFamily="@font/didact_gothic" />
     </android.support.v7.widget.CardView>
+
+
 
     <android.support.v7.widget.CardView
         android:id="@+id/student_settings_cv_cancel"
