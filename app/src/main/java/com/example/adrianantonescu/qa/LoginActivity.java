@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity{
     }
     private void initComponents(){
         loginButton = findViewById(R.id.btn_login);
-        loginButton.setOnClickListener(homePageStudent());
+//        loginButton.setOnClickListener(homePageStudent());
         tvForgot = findViewById(R.id.tv_forgot_password);
         tvForgot.setOnClickListener(startForgot());
         edtUsername = findViewById(R.id.et_username);
@@ -62,6 +62,15 @@ public class LoginActivity extends AppCompatActivity{
                 }
                 else {
                     Toast.makeText(getApplicationContext(), getString(R.string.login_shared_error), Toast.LENGTH_LONG).show();
+                }
+                if (isValid()) {
+                    Intent intent = new Intent(getApplicationContext(),
+                            HomeActivity.class);
+                    startActivity(intent);
+                }else if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
+                    edtUsername.setError(getString(R.string.login_error_inset_username));
+                }else if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) ||(edtPassword.getText().toString() == null)) {
+                    edtPassword.setError(getString(R.string.login_error_insert_password));
                 }
             }
         };
@@ -98,23 +107,22 @@ public class LoginActivity extends AppCompatActivity{
         return true;
     }
 
-    private View.OnClickListener homePageStudent() {
-            return new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (isValid()) {
-                        Intent intent = new Intent(getApplicationContext(),
-                                HomeActivity.class);
-                        startActivity(intent);
-                    }else if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
-                       edtUsername.setError(getString(R.string.login_error_inset_username));
-                    }else if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) ||(edtPassword.getText().toString() == null)) {
-                        edtPassword.setError(getString(R.string.login_error_insert_password));
-                    }
-
-                }
-
-            };
+//    private View.OnClickListener homePageStudent() {
+//            return new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (isValid()) {
+//                        Intent intent = new Intent(getApplicationContext(),
+//                                HomeActivity.class);
+//                        startActivity(intent);
+//                    }else if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
+//                       edtUsername.setError(getString(R.string.login_error_inset_username));
+//                    }else if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) ||(edtPassword.getText().toString() == null)) {
+//                        edtPassword.setError(getString(R.string.login_error_insert_password));
+//                    }
+//
+//                }
+//
+//            };
     }
-
-}
+    
