@@ -189,5 +189,11 @@
     <string name="et_email">Enter email!</string>
     <string name="students_report_students_grade">Students grades</string>
     <string name="btn_view_students">View Students</string>
+    <string name="students_report_save">Save to file</string>
+    <string name="students_report_permission">Permission granted!</string>
+    <string name="students_report_denied">Permission denied!</string>
+    <string name="student_report_saved_to_file">Saved to file!</string>
+    <string name="student_report_filename">studentreport.txt</string>
+    <string name="students_report_save_error">Error at saving!</string>
 
 </resources>
