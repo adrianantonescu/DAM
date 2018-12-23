@@ -32,8 +32,8 @@ public class MoreOptionsActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(getApplicationContext(), .class);
-//                startActivity(i);
+                Intent i = new Intent(getApplicationContext(), ListTeachers.class);
+                startActivity(i);
             }
         };
     }

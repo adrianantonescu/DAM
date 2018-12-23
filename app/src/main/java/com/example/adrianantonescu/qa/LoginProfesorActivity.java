@@ -34,8 +34,8 @@ public class LoginProfesorActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.et_username_profesor);
         edtPassword = findViewById(R.id.et_password_profesor);
         repository = new DatabaseRepository(getApplicationContext());
-//        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
-//        initializeDb.insertInDb();
+        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
+        initializeDb.insertInDb();
     }
 
     private boolean isValid(){

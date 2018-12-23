@@ -34,14 +34,14 @@ public class TeacherAdapter extends ArrayAdapter<Teacher> {
                         @NonNull ViewGroup parent) {
         View row = inflater.inflate(resource, parent, false);
 
-        TextView tvId = row.findViewById(R.id.tv_lv_teach_row_id);
+        //TextView tvId = row.findViewById(R.id.tv_lv_teach_row_id);
         TextView tvFirstName = row.findViewById(R.id.tv_lv_teach_row_first_name);
         TextView tvLastName = row.findViewById(R.id.tv_lv_teach_row_last_name);
         TextView tvEmail = row.findViewById(R.id.tv_lv_teach_row_email);
 
         Teacher teacher = teachers.get(position);
 
-        tvId.setText(teacher.getId() != null ? teacher.getId().toString() : context.getString(R.string.tv_lv_teach_no_id));
+//        tvId.setText(teacher.getId() != null ? teacher.getId().toString() : context.getString(R.string.tv_lv_teach_no_id));
         tvFirstName.setText(teacher.getFirstName());
         tvLastName.setText(teacher.getLastName());
         tvEmail.setText(teacher.getEmail());

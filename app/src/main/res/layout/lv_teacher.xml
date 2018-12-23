@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient">
-    <TextView
-        android:layout_marginTop="60dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="20sp"
-        android:id="@+id/tv_lv_teach_row_id"
-        android:textColor="#FFFFFF"/>
+    android:layout_gravity="center">
 
-    <TextView
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/lv_linear_layout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.5"
-        android:id="@+id/tv_lv_teach_row_first_name"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"/>
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:textSize="20sp"
-        android:id="@+id/tv_lv_teach_row_last_name"
-        android:textColor="#FFFFFF"/>
+        <TextView
+            android:id="@+id/tv_lv_teach_row_first_name"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="@color/backgroundColor"
+            android:textSize="15sp"
+            app:fontFamily="@font/didact_gothic" />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.4"
-        android:textSize="20sp"
-        android:id="@+id/tv_lv_teach_row_email"
-        android:textColor="#FFFFFF"/>
+        <TextView
+            android:id="@+id/tv_lv_teach_row_last_name"
+            android:layout_width="37dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7.8"
+            android:textColor="@color/backgroundColor"
+            android:textSize="15sp"
+            app:fontFamily="@font/didact_gothic" />
 
+        <TextView
+            android:id="@+id/tv_lv_teach_row_email"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.7"
+            android:width="100dp"
+            android:textColor="@color/backgroundColor"
+            android:textSize="15sp"
+            app:fontFamily="@font/didact_gothic" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
