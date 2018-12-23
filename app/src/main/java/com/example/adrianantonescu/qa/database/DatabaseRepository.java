@@ -298,7 +298,9 @@ public class DatabaseRepository implements DatabaseConstants {
             String firstName = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_FIRST_NAME));
             String lastName = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_LAST_NAME));
             String email = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_EMAIL));
-            profesori.add(new Teacher(id, null, null, firstName, lastName, email, null, null));
+            Teacher teacher = new Teacher(null, null, firstName, lastName, email, null);
+            teacher.setId(id);
+            profesori.add(teacher);
         }
         cursor.close();
         return profesori;
