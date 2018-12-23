@@ -206,10 +206,6 @@
 
     <string name="btn_teachers_report">Teachers report</string>
 
-    <string name="student_settings_cv_tv_list_teachers_txt">List teachers</string>
-    <string name="list_teachers_tv_teachers">Teachers</string>
-    <string name="tv_lv_teach_no_id">No id</string>
-    <string name="tv_lv_no_first_name">No first name</string>
 
 
 </resources>
