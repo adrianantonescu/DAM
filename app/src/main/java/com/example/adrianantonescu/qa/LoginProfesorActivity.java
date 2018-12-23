@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.adrianantonescu.qa.database.DatabaseRepository;
+import com.example.adrianantonescu.qa.util.InitializeDbHelper;
 
 public class LoginProfesorActivity extends AppCompatActivity {
 
@@ -33,6 +34,8 @@ public class LoginProfesorActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.et_username_profesor);
         edtPassword = findViewById(R.id.et_password_profesor);
         repository = new DatabaseRepository(getApplicationContext());
+//        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
+//        initializeDb.insertInDb();
     }
 
     private boolean isValid(){
