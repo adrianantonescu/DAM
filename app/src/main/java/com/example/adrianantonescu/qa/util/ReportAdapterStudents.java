@@ -15,13 +15,13 @@ import com.example.adrianantonescu.qa.network.Stud;
 
 import java.util.List;
 
-public class ReportAdapter extends ArrayAdapter<Student> {
+public class ReportAdapterStudents extends ArrayAdapter<Student> {
     private Context context;
     private int resource;
     private List<Student> students;
     private LayoutInflater layoutInflater;
 
-    public ReportAdapter(@NonNull Context context, int resource, @NonNull List<Student> objects, LayoutInflater inflater) {
+    public ReportAdapterStudents(@NonNull Context context, int resource, @NonNull List<Student> objects, LayoutInflater inflater) {
         super(context, resource, objects);
         this.context=context;
         this.resource=resource;
@@ -32,13 +32,13 @@ public class ReportAdapter extends ArrayAdapter<Student> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View linie=layoutInflater.inflate(resource,parent,false);
-        TextView tvFullName, tvResult;
-        tvFullName=linie.findViewById(R.id.lv_studs_tv_fullName);
-        tvResult=linie.findViewById(R.id.lv_studs_tv_result);
+        View line=layoutInflater.inflate(resource,parent,false);
+        TextView tvFullName, tvGrades;
+        tvFullName=line.findViewById(R.id.lv_student_report_name);
+        tvGrades=line.findViewById(R.id.lv_student_report_grades);
         Student stud = students.get(position);
         tvFullName.setText(stud.getFirstName()+" "+stud.getLastName());
-        tvResult.setText(stud.getNote().toString());
-        return linie;
+        tvGrades.setText(stud.getNote().toString());
+        return line;
     }
 }

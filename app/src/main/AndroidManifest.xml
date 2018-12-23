@@ -94,10 +94,13 @@
         <activity
             android:name=".ReportBugActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".TeacherStatisticsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".TeacherStatisticsMoreActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".TeacherStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TeacherStatisticsMoreActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".StudentsReportActivity"></activity>
     </application>
 
 </manifest>
