@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class StudentProfileSettingsActivity extends AppCompatActivity {
 
-    CardView cvChangePass, cvEditProfile, cvLogout, cvCancel;
+    CardView cvChangePass, cvEditProfile, cvLogout, cvCancel, cvList;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class StudentProfileSettingsActivity extends AppCompatActivity {
 
     private void init()
     {
+        cvList = findViewById(R.id.student_settings_cv_list_teachers);
         cvChangePass=findViewById(R.id.student_settings_cv_change_password);
         cvEditProfile=findViewById(R.id.student_settings_cv_edit_profile);
         cvLogout=findViewById(R.id.student_settings_cv_logout);
@@ -28,6 +29,7 @@ public class StudentProfileSettingsActivity extends AppCompatActivity {
         cvEditProfile.setOnClickListener(editProfile());
         cvLogout.setOnClickListener(logout());
         cvCancel.setOnClickListener(cancel());
+        cvList.setOnClickListener(listTeachers());
     }
 
     private View.OnClickListener changePass()
@@ -70,6 +72,15 @@ public class StudentProfileSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        };
+    }
+    private View.OnClickListener listTeachers(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(), ListTeachers.class);
+                startActivity(intent);
             }
         };
     }

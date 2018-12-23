@@ -282,4 +282,25 @@ public class DatabaseRepository implements DatabaseConstants {
 
         return studenti;
     }
+
+    public List<Teacher> findAllTeachers(){
+        List<Teacher> profesori = new ArrayList<>();
+        Cursor cursor = database.query(TEACHER_PROFILE_TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        while (cursor.moveToNext()) {
+            Long id = cursor.getLong(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_ID));
+            String firstName = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_LAST_NAME));
+            String email = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_EMAIL));
+            profesori.add(new Teacher(null, null, firstName, lastName, email, null));
+        }
+        cursor.close();
+        return profesori;
+    }
 }
