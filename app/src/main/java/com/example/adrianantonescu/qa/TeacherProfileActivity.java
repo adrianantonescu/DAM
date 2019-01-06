@@ -18,6 +18,8 @@ public class TeacherProfileActivity extends AppCompatActivity {
     TextView tvBio;
     Button btnBack;
     Intent intent;
+    private Long id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,8 @@ public class TeacherProfileActivity extends AppCompatActivity {
             String newBio = bundle.getString(constants.BIO_KEY);
             if(newBio!=null)
                 tvBio.setText(newBio);
+            id = bundle.getLong(constants.ID_KEY);
+            Toast.makeText(getApplicationContext(), id.toString(), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -60,6 +64,7 @@ public class TeacherProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent=new Intent(getApplicationContext(),TeacherProfileSettingsActivity.class);
+                intent.putExtra(constants.ID_KEY, id);
                 startActivity(intent);
             }
         };

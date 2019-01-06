@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.adrianantonescu.qa.database.DatabaseRepository;
 import com.example.adrianantonescu.qa.util.constants;
 
 public class TeacherHomeActivity extends AppCompatActivity {
@@ -19,6 +20,8 @@ public class TeacherHomeActivity extends AppCompatActivity {
 
     CardView cvAddQuiz;
     Intent intent;
+    Long id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
         if(bundle!=null)
         {
             Long getId = bundle.getLong(constants.ID_KEY);
+            id = bundle.getLong(constants.ID_KEY);
             Toast.makeText(getApplicationContext(),getId.toString(),Toast.LENGTH_LONG).show();
         }
 
@@ -82,6 +86,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),TeacherProfileActivity.class);
+                intent.putExtra(constants.ID_KEY, id);
                 startActivity(intent);
             }
         };
