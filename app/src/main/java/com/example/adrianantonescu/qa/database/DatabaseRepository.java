@@ -201,39 +201,39 @@ public class DatabaseRepository implements DatabaseConstants {
         return contentValues;
     }
 
-    public int queryStudentForLogin(String username, String password) {
-        String queryString = "SELECT " + STUDENT_PROFILE_COLUMN_USERNAME + ", "
+    public long queryStudentForLogin(String username, String password) {
+        String queryString = "SELECT " + STUDENT_PROFILE_COLUMN_ID+ ", "+ STUDENT_PROFILE_COLUMN_USERNAME + ", "
                 + STUDENT_PROFILE_COLUMN_PASSWORD + " FROM " + STUDENT_PROFILE_TABLE_NAME
                 + " WHERE username = ?";
 
         Cursor cursor = database.rawQuery(queryString, new String[]{username});
-        if(!cursor.isNull(0)) {
-            cursor.moveToFirst();
+        if( cursor != null && cursor.moveToFirst() )  {
+            long idDb = cursor.getLong(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_ID));
             String usernameDb = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_USERNAME));
             String passwordDb = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_PASSWORD));
             cursor.close();
             if (usernameDb.equals(username) && passwordDb.equals(password)) {
-                return -1;
+                return idDb;
             }
-        } else {
-            return -1;
         }
-        return 1;
+        return -1;
     }
 
-    public int queryTeacherForLogin(String username, String password) {
-        String queryString  = "SELECT " + TEACHER_PROFILE_USERNAME +", "
+    public long queryTeacherForLogin(String username, String password) {
+        String queryString  = "SELECT " + TEACHER_PROFILE_COLUMN_ID + ", "+ TEACHER_PROFILE_USERNAME +", "
                 + TEACHER_PROFILE_PASSWORD + " FROM " + TEACHER_PROFILE_TABLE_NAME
                 + " WHERE username = ?";
         Cursor cursor = database.rawQuery(queryString, new String[] {username});
-        cursor.moveToFirst();
-        String usernameDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_USERNAME));
-        String passwordDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_PASSWORD));
-        cursor.close();
-        if(usernameDb.equals(username) && passwordDb.equals(password)) {
-            return -1;
+        if( cursor != null && cursor.moveToFirst() ) {
+            long idDb = cursor.getLong(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_ID));
+            String usernameDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_USERNAME));
+            String passwordDb = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_PASSWORD));
+            cursor.close();
+            if(usernameDb.equals(username) && passwordDb.equals(password)) {
+                return idDb;
+            }
         }
-        return 1;
+        return -1;
     }
 
 

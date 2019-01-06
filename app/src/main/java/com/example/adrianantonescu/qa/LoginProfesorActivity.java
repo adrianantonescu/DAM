@@ -38,8 +38,6 @@ public class LoginProfesorActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.et_username_profesor);
         edtPassword = findViewById(R.id.et_password_profesor);
         repository = new DatabaseRepository(getApplicationContext());
-        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
-        initializeDb.insertInDb();
         sharedPreferences = getSharedPreferences(constants.LOGIN_PREF_FILE_NAME_TEACHER,MODE_PRIVATE);
         restoreSharedPref();
     }
@@ -75,18 +73,26 @@ public class LoginProfesorActivity extends AppCompatActivity {
 
                 editor.putString(constants.LOGIN_USERNAME_PREF_TEACH, username);
                 editor.putString(constants.LOGIN_PASSWORD_PREF_TEACH, password);
-
                 boolean result = editor.commit();
 
-                if (result) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_succes), Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_error), Toast.LENGTH_LONG).show();
-                }
+//                if (result) {
+//                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_succes), Toast.LENGTH_LONG).show();
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_error), Toast.LENGTH_LONG).show();
+//                }
                 if (isValid()) {
-                    Intent i = new Intent(getApplicationContext(), TeacherHomeActivity.class);
-                    startActivity(i);
+                    repository.open();
+                    long id = repository.queryTeacherForLogin(username, password);
+                    repository.close();
+                    if(id!=-1) {
+                        Intent i = new Intent(getApplicationContext(), TeacherHomeActivity.class);
+                        i.putExtra(constants.ID_KEY, id);
+                        startActivity(i);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),R.string.login_toast_wrong, Toast.LENGTH_LONG).show();
+                    }
                 }else if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
                     edtUsername.setError(getString(R.string.username_error));
                 }else if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) ||(edtPassword.getText().toString() == null)) {

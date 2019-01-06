@@ -29,8 +29,8 @@ public class InitializeDbHelper {
         Course c3 = new Course(3L, "Java", 3);
 
         databaseRepository.open();
-//        databaseRepository.insertStudent(stud1);
-//        databaseRepository.insertStudent(stud2);
+        databaseRepository.insertStudent(stud1);
+        databaseRepository.insertStudent(stud2);
         databaseRepository.insertTeacher(t1);
         databaseRepository.insertTeacher(t2);
 //        databaseRepository.insertCourse(c1);

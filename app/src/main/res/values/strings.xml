@@ -205,7 +205,7 @@
     <string name="login_shared_error">Date nu au fost salvate!</string>
 
     <string name="btn_teachers_report">Teachers report</string>
-
+    <string name="login_toast_wrong">Wrong username or password!</string>
 
 
 </resources>
