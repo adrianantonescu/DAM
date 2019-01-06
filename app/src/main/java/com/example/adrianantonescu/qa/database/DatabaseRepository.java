@@ -312,7 +312,7 @@ public class DatabaseRepository implements DatabaseConstants {
             }
             cursor1.close();
 
-            Student student = new Student(username, password, firstName, lastName, email, bio,  spec, year, series, group);
+            Student student = new Student(id, username, password, firstName, lastName, email, bio,  spec, year, series, group);
             student.setNote(note);
             studenti.add(student);
 

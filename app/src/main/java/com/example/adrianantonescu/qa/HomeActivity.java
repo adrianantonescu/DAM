@@ -16,7 +16,7 @@ public class HomeActivity extends AppCompatActivity {
     CardView cvGradebook;
     CardView cvStatistics;
     Intent intent;
-
+    Long id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +36,8 @@ public class HomeActivity extends AppCompatActivity {
         Bundle bundle=intent.getExtras();
         if(bundle!=null)
         {
-            Long getId = bundle.getLong(constants.ID_KEY);
-            Toast.makeText(getApplicationContext(),getId.toString(),Toast.LENGTH_LONG).show();
+            id = bundle.getLong(constants.ID_KEY);
+//            Toast.makeText(getApplicationContext(),id.toString(),Toast.LENGTH_LONG).show();
         }
     }
 
@@ -56,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),GradebookActivity.class);
+                i.putExtra(constants.ID_KEY,id);
                 startActivity(i);
             }
         };
