@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,9 +31,10 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
     private DatabaseRepository databaseRepository;
     private Long id;
     private FirebaseController firebaseController;
-    private List<Teacher> teachers;
+    private List<Teacher> teachers = new ArrayList<>();
     private String key;
     private Teacher teacher;
+    String newBio;
 
 
     @Override
@@ -41,6 +43,8 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teacher_profile_settings);
         init();
     }
+
+
     private void init()
     {
         tvChangePicture=findViewById(R.id.teacher_profile_settings_tv_change_profile_picture);
@@ -57,35 +61,43 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
             id = bundle.getLong(constants.ID_KEY);
         }
         firebaseController = FirebaseController.getInstance();
-
         databaseRepository = new DatabaseRepository(getApplicationContext());
         databaseRepository.open();
         teacher = databaseRepository.queryTeacher(id);
         databaseRepository.close();
 
-        teachers = firebaseController.findAllTeachers(selectEventListener());
-        Integer size = teachers.size();
-        for (Teacher t : teachers) {
-            if (t.getId() == teacher.getId()) {
-                Log.i("TeacherProfileSettings", "teacher found");
-                teacher.setGlobalId(t.getGlobalId());
-            }
-        }
-        key = firebaseController.upsertTeacher(teacher);
+//        if(bundle != null) {
+//            newBio = bundle.getString(constants.BIO_KEY);
+//            if(newBio != null) {
+//                teacher.setBio(newBio);
+//            }
+//        }
+        firebaseController.findAllTeachers(selectEventListener());
     }
-
 
     private ValueEventListener selectEventListener() {
         return new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                teachers = new ArrayList<>();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Teacher teacher = data.getValue(Teacher.class);
-                    if (teacher != null) {
-                        teachers.add(teacher);
+                    Teacher t = data.getValue(Teacher.class);
+                    Log.i("TeacherProfileSettings", t.getGlobalId());
+                    if (t != null) {
+                        teachers.add(t);
+                        Log.i("TeacherProfileSettings", "teacher added to list");
                     }
                 }
+                Integer size = teachers.size();
+                if (size == 0) {
+                    Log.e("TeacherProfileSettings", "No teachers found");
+                }
+                for (Teacher t : teachers) {
+                    if (t.getId() == teacher.getId()) {
+                        Log.i("TeacherProfileSettings", "teacher found");
+                        teacher.setGlobalId(t.getGlobalId());
+                    }
+                }
+                key = firebaseController.upsertTeacher(teacher);
             }
 
             @Override
@@ -119,6 +131,7 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent=new Intent(getApplicationContext(),ChangeBioActivity.class);
+                intent.putExtra(constants.ID_KEY, id);
                 startActivity(intent);
             }
         };
