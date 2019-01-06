@@ -17,6 +17,8 @@ public class ChangeBioActivity extends AppCompatActivity {
     String bio;
     Intent intent;
     Button btnSave;
+    private Long id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,11 @@ public class ChangeBioActivity extends AppCompatActivity {
         etBio=findViewById(R.id.change_bio_et_bio);
         btnSave=findViewById(R.id.change_bio_btn_save);
         btnSave.setOnClickListener(doSave());
+        intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle != null) {
+            id = bundle.getLong(constants.ID_KEY);
+        }
     }
     private View.OnClickListener doSave(){
         return new View.OnClickListener() {
@@ -38,8 +45,9 @@ public class ChangeBioActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),getString(R.string.change_bio_write_bio_txt),Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    intent = new Intent(getApplicationContext(), TeacherProfileActivity.class);
+                    intent = new Intent(getApplicationContext(), TeacherProfileSettingsActivity.class);
                     intent.putExtra(constants.BIO_KEY, bio);
+                    intent.putExtra(constants.ID_KEY, id);
                     Toast.makeText(getApplicationContext(),R.string.change_bio_updated_bio_msg,Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }

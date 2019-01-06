@@ -32,10 +32,9 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
     private Long id;
     private FirebaseController firebaseController;
     private List<Teacher> teachers = new ArrayList<>();
-    private List<Teacher> teachers2 = new ArrayList<>();
     private String key;
     private Teacher teacher;
-    Button btn;
+    String newBio;
 
 
     @Override
@@ -45,9 +44,6 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
         init();
     }
 
-    private void initializeTeacherList(){
-        teachers2 = firebaseController.findAllTeachers(selectEventListener());
-    }
 
     private void init()
     {
@@ -65,12 +61,18 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
             id = bundle.getLong(constants.ID_KEY);
         }
         firebaseController = FirebaseController.getInstance();
-        initializeTeacherList();
         databaseRepository = new DatabaseRepository(getApplicationContext());
         databaseRepository.open();
         teacher = databaseRepository.queryTeacher(id);
         databaseRepository.close();
 
+        if(bundle != null) {
+            newBio = bundle.getString(constants.BIO_KEY);
+            if(newBio != null) {
+                teacher.setBio(newBio);
+            }
+        }
+        firebaseController.findAllTeachers(selectEventListener());
     }
 
     private ValueEventListener selectEventListener() {
@@ -78,10 +80,10 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Teacher teacher = data.getValue(Teacher.class);
-                    Log.i("TeacherProfileSettings", teacher.getGlobalId());
-                    if (teacher != null) {
-                        teachers.add(teacher);
+                    Teacher t = data.getValue(Teacher.class);
+                    Log.i("TeacherProfileSettings", t.getGlobalId());
+                    if (t != null) {
+                        teachers.add(t);
                         Log.i("TeacherProfileSettings", "teacher added to list");
                     }
                 }
@@ -129,6 +131,7 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent=new Intent(getApplicationContext(),ChangeBioActivity.class);
+                intent.putExtra(constants.ID_KEY, id);
                 startActivity(intent);
             }
         };
