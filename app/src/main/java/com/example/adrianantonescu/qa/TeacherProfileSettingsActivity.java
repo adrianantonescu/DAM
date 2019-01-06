@@ -66,12 +66,12 @@ public class TeacherProfileSettingsActivity extends AppCompatActivity {
         teacher = databaseRepository.queryTeacher(id);
         databaseRepository.close();
 
-        if(bundle != null) {
-            newBio = bundle.getString(constants.BIO_KEY);
-            if(newBio != null) {
-                teacher.setBio(newBio);
-            }
-        }
+//        if(bundle != null) {
+//            newBio = bundle.getString(constants.BIO_KEY);
+//            if(newBio != null) {
+//                teacher.setBio(newBio);
+//            }
+//        }
         firebaseController.findAllTeachers(selectEventListener());
     }
 
