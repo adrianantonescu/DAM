@@ -10,6 +10,8 @@ public class MoreOptionsActivity extends AppCompatActivity {
 
     private Button btnReport;
     private Button btnViewStatistics;
+    private Button btnReportStudents;
+    private Button btnReportTeachers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,31 @@ public class MoreOptionsActivity extends AppCompatActivity {
         btnReport.setOnClickListener(openReport());
         btnViewStatistics = findViewById(R.id.btn_view_statistics);
         btnViewStatistics.setOnClickListener(openStatistics());
+        btnReportStudents = findViewById(R.id.btn_view_student_report);
+        btnReportStudents.setOnClickListener(openReportStudents());
+        btnReportTeachers = findViewById(R.id.btn_view_teachers_report);
+        btnReportTeachers.setOnClickListener(openReportTeachers());
+    }
+
+    private View.OnClickListener openReportTeachers() {
+        return new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), ListTeachers.class);
+                startActivity(i);
+            }
+        };
+    }
+
+    private View.OnClickListener openReportStudents() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),StudentsReportActivity.class);
+                startActivity(i);
+            }
+        };
     }
 
     private View.OnClickListener openStatistics() {

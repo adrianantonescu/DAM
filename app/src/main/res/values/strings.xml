@@ -182,5 +182,30 @@
     <string name="feedback_message">Enter your message!</string>
     <string name="statistics_ratecompleted">Rate of students having completed the test</string>
     <string name="back_to_home">Back to home</string>
+    <string name="et_specialization">Enter specialization!</string>
+    <string name="et_year">Enter year!</string>
+    <string name="et_series">Enter series!</string>
+    <string name="et_group">Enter group!</string>
+    <string name="et_email">Enter email!</string>
+
+    <string name="student_settings_cv_tv_list_teachers_txt">List teachers</string>
+    <string name="list_teachers_tv_teachers">Teachers</string>
+    <string name="tv_lv_teach_no_id">No id</string>
+    <string name="tv_lv_no_first_name">No first name</string>
+
+    <string name="students_report_students_grade">Students grades</string>
+    <string name="btn_view_students">View Students</string>
+    <string name="students_report_save">Save to file</string>
+    <string name="students_report_permission">Permission granted!</string>
+    <string name="students_report_denied">Permission denied!</string>
+    <string name="student_report_saved_to_file">Saved to file!</string>
+    <string name="student_report_filename">studentreport.txt</string>
+    <string name="students_report_save_error">Error at saving!</string>
+    <string name="login_shared_succes">Datele au fost salvate!</string>
+    <string name="login_shared_error">Date nu au fost salvate!</string>
+
+    <string name="btn_teachers_report">Teachers report</string>
+
+
 
 </resources>

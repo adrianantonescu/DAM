@@ -1,12 +1,18 @@
 package com.example.adrianantonescu.qa;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.adrianantonescu.qa.database.DatabaseRepository;
+import com.example.adrianantonescu.qa.util.InitializeDbHelper;
+import com.example.adrianantonescu.qa.util.constants;
 
 public class LoginProfesorActivity extends AppCompatActivity {
 
@@ -14,6 +20,9 @@ public class LoginProfesorActivity extends AppCompatActivity {
     private TextView tvForgot;
     private EditText edtUsername;
     private EditText edtPassword;
+    private SharedPreferences sharedPreferences;
+
+    private DatabaseRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +37,21 @@ public class LoginProfesorActivity extends AppCompatActivity {
         tvForgot.setOnClickListener(startForgot());
         edtUsername = findViewById(R.id.et_username_profesor);
         edtPassword = findViewById(R.id.et_password_profesor);
+        repository = new DatabaseRepository(getApplicationContext());
+        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
+        initializeDb.insertInDb();
+        sharedPreferences = getSharedPreferences(constants.LOGIN_PREF_FILE_NAME_TEACHER,MODE_PRIVATE);
+        restoreSharedPref();
     }
 
+
+    private void restoreSharedPref() {
+        String username = sharedPreferences.getString(constants.LOGIN_USERNAME_PREF_TEACH, null);
+        String password = sharedPreferences.getString(constants.LOGIN_PASSWORD_PREF_TEACH, null);
+
+        edtUsername.setText(username);
+        edtPassword.setText(password);
+    }
     private boolean isValid(){
         if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
             return false;
@@ -44,6 +66,24 @@ public class LoginProfesorActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String username = edtUsername.getText() != null ?
+                        edtUsername.getText().toString() : null;
+                String password = edtPassword.getText() != null ?
+                        edtPassword.getText().toString() : null;
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putString(constants.LOGIN_USERNAME_PREF_TEACH, username);
+                editor.putString(constants.LOGIN_PASSWORD_PREF_TEACH, password);
+
+                boolean result = editor.commit();
+
+                if (result) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_succes), Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_error), Toast.LENGTH_LONG).show();
+                }
                 if (isValid()) {
                     Intent i = new Intent(getApplicationContext(), TeacherHomeActivity.class);
                     startActivity(i);
