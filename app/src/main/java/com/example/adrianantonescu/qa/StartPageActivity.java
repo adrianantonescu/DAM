@@ -17,7 +17,7 @@ public class StartPageActivity extends AppCompatActivity {
     private Button btnStudent;
     private Button btnTeacher;
     private LinearLayout llAbout;
-//    private DatabaseRepository repository;
+    private DatabaseRepository repository;
   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +25,9 @@ public class StartPageActivity extends AppCompatActivity {
         initComponents();
     }
     private void initComponents(){
-//        repository= new DatabaseRepository(getApplicationContext());
-//        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
-//        initializeDb.insertInDb();
+        repository= new DatabaseRepository(getApplicationContext());
+        InitializeDbHelper initializeDb = new InitializeDbHelper(repository);
+        initializeDb.insertInDb();
         btnStudent = findViewById(R.id.btn_student);
         btnStudent.setOnClickListener(startLogin());
         btnTeacher = findViewById(R.id.btn_profesor);
