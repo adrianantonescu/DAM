@@ -1,5 +1,6 @@
 package com.example.adrianantonescu.qa.util;
 
+import android.net.Uri;
 import android.os.Parcelable;
 
 public abstract class Profile {
@@ -10,6 +11,12 @@ public abstract class Profile {
     private String lastName;
     private String email;
     private String bio;
+    private String globalId;
+    private Uri imageUri;
+
+    public Profile() {
+
+    }
 
     public Profile(String username, String password, String firstName, String lastName, String email, String bio) {
         this.username = username;
@@ -18,6 +25,22 @@ public abstract class Profile {
         this.lastName = lastName;
         this.email = email;
         this.bio = bio;
+    }
+
+    public String getGlobalId() {
+        return globalId;
+    }
+
+    public void setGlobalId(String globalId) {
+        this.globalId = globalId;
+    }
+
+    public Uri getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(Uri imageUri) {
+        this.imageUri = imageUri;
     }
 
     public Long getId() {

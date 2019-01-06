@@ -10,6 +10,10 @@ public class Teacher extends Profile {
         super(username, password, firstName, lastName, email, bio);
     }
 
+    public Teacher() {
+
+    }
+
     public Course[] getCourses() {
         return courses;
     }

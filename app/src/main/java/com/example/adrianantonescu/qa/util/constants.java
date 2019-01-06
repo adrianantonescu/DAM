@@ -14,6 +14,9 @@ public interface constants {
     String STAT_KEY="newStatistics";
     String ID_KEY="sendID";
 
+    String FB_KEY="sendKey";
+    String SET_BIO_KEY = "sendBio";
+
     String LOGIN_PREF_FILE_NAME = "loginPref";
 
     String LOGIN_USERNAME_PREF = "loginUsernamePref";

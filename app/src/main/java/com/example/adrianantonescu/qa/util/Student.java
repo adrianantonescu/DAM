@@ -1,5 +1,7 @@
 package com.example.adrianantonescu.qa.util;
 
+import com.example.adrianantonescu.qa.network.Stud;
+
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -16,6 +18,10 @@ public class Student extends Profile {
         this.year = year;
         this.series = series;
         this.group = group;
+    }
+
+    public Student() {
+
     }
 
     public String getSpecialization() {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
 
 import com.example.adrianantonescu.qa.network.Stud;
 import com.example.adrianantonescu.qa.util.Course;
@@ -234,6 +235,44 @@ public class DatabaseRepository implements DatabaseConstants {
             }
         }
         return -1;
+    }
+
+    public Teacher queryTeacher(long id) {
+        String queryString = "SELECT * FROM " + TEACHER_PROFILE_TABLE_NAME + " WHERE " + TEACHER_PROFILE_COLUMN_ID + " = " + id;
+        Cursor cursor = database.rawQuery(queryString, null);
+        if(cursor != null && cursor.moveToFirst()) {
+            String username = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_USERNAME));
+            String password = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_PASSWORD));
+            String firstName = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_LAST_NAME));
+            String email = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_COLUMN_EMAIL));
+            String bio = cursor.getString(cursor.getColumnIndex(TEACHER_PROFILE_BIO));
+            Teacher teacher = new Teacher(username, password, firstName, lastName, email, bio);
+            teacher.setId(id);
+            return teacher;
+        }
+        return null;
+    }
+
+    public Student queryStudent(long id) {
+        String queryString = "SELECT * FROM " + STUDENT_PROFILE_TABLE_NAME + " WHERE " + STUDENT_PROFILE_COLUMN_ID + " = " + id;
+        Cursor cursor = database.rawQuery(queryString, null);
+        if(cursor != null && cursor.moveToFirst()) {
+            String username = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_USERNAME));
+            String password = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_PASSWORD));
+            String firstName = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_LAST_NAME));
+            String email = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_EMAIL));
+            String bio = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_BIO));
+            String spec = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_SPECIALIZATION));
+            Integer year = cursor.getInt(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_YEAR));
+            String series = cursor.getString(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_SERIES));
+            Integer group = cursor.getInt(cursor.getColumnIndex(STUDENT_PROFILE_COLUMN_GROUP));
+            Student student = new Student(username, password, firstName, lastName, email, bio,  spec, year, series, group);
+            student.setId(id);
+            return student;
+        }
+        return null;
     }
 
 
