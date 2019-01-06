@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Toast;
+
+import com.example.adrianantonescu.qa.util.constants;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -12,7 +15,7 @@ public class HomeActivity extends AppCompatActivity {
     CardView cvFeedback;
     CardView cvGradebook;
     CardView cvStatistics;
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,13 @@ public class HomeActivity extends AppCompatActivity {
         cvGradebook.setOnClickListener(startGradebook());
         cvStatistics = findViewById(R.id.student_home_statistics_cardView);
         cvStatistics.setOnClickListener(startStatistics());
+        intent=getIntent();
+        Bundle bundle=intent.getExtras();
+        if(bundle!=null)
+        {
+            Long getId = bundle.getLong(constants.ID_KEY);
+            Toast.makeText(getApplicationContext(),getId.toString(),Toast.LENGTH_LONG).show();
+        }
     }
 
     private View.OnClickListener startStatistics() {

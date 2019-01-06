@@ -12,36 +12,37 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.adrianantonescu.qa.database.DatabaseRepository;
 import com.example.adrianantonescu.qa.util.constants;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton;
     private TextView tvForgot;
     private EditText edtUsername;
     private EditText edtPassword;
     private SharedPreferences sharedPreferences;
-
+    private DatabaseRepository repository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initComponents();
     }
-    private void initComponents(){
+
+    private void initComponents() {
         loginButton = findViewById(R.id.btn_login);
-//        loginButton.setOnClickListener(homePageStudent());
         tvForgot = findViewById(R.id.tv_forgot_password);
         tvForgot.setOnClickListener(startForgot());
         edtUsername = findViewById(R.id.et_username);
         edtPassword = findViewById(R.id.et_password);
-
-        sharedPreferences = getSharedPreferences(constants.LOGIN_PREF_FILE_NAME,MODE_PRIVATE);
-        loginButton.setOnClickListener(saveEvent());
+        repository = new DatabaseRepository(getApplicationContext());
+        sharedPreferences = getSharedPreferences(constants.LOGIN_PREF_FILE_NAME, MODE_PRIVATE);
+        loginButton.setOnClickListener(startStudentHome());
         restoreSharedPref();
     }
 
-    private View.OnClickListener saveEvent() {
+    private View.OnClickListener startStudentHome() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,19 +58,26 @@ public class LoginActivity extends AppCompatActivity{
 
                 boolean result = editor.commit();
 
-                if (result) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_succes), Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_error), Toast.LENGTH_LONG).show();
-                }
+//                if (result) {
+//                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_succes), Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(getApplicationContext(), getString(R.string.login_shared_error), Toast.LENGTH_LONG).show();
+//                }
                 if (isValid()) {
-                    Intent intent = new Intent(getApplicationContext(),
-                            HomeActivity.class);
-                    startActivity(intent);
-                }else if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
+                    repository.open();
+                    long id = repository.queryStudentForLogin(username, password);
+                    repository.close();
+                    if(id!=-1) {
+                        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        i.putExtra(constants.ID_KEY, id);
+                        startActivity(i);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),R.string.login_toast_wrong, Toast.LENGTH_LONG).show();
+                    }
+                } else if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
                     edtUsername.setError(getString(R.string.login_error_inset_username));
-                }else if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) ||(edtPassword.getText().toString() == null)) {
+                } else if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) || (edtPassword.getText().toString() == null)) {
                     edtPassword.setError(getString(R.string.login_error_insert_password));
                 }
             }
@@ -88,41 +96,23 @@ public class LoginActivity extends AppCompatActivity{
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),ForgotPasswordActivity.class);
+                Intent i = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
                 startActivity(i);
-
 
 
             }
         };
     }
 
-    private boolean isValid(){
+    private boolean isValid() {
         if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
             return false;
         }
-        if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) ||(edtPassword.getText().toString() == null)) {
+        if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) || (edtPassword.getText().toString() == null)) {
             return false;
         }
         return true;
     }
 
-//    private View.OnClickListener homePageStudent() {
-//            return new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    if (isValid()) {
-//                        Intent intent = new Intent(getApplicationContext(),
-//                                HomeActivity.class);
-//                        startActivity(intent);
-//                    }else if ((edtUsername.getText() == null) || (edtUsername.getText().toString().trim().isEmpty()) || (edtUsername.getText().toString() == null)) {
-//                       edtUsername.setError(getString(R.string.login_error_inset_username));
-//                    }else if ((edtPassword.getText() == null) || (edtPassword.getText().toString().trim().isEmpty()) ||(edtPassword.getText().toString() == null)) {
-//                        edtPassword.setError(getString(R.string.login_error_insert_password));
-//                    }
-//
-//                }
-//
-//            };
-    }
+}
 
