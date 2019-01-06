@@ -210,5 +210,6 @@
     <string name="maps_building_name">Faculty of Cybernetics, Statistics and Informatics</string>
     <string name="about_button_txt_more">More about us</string>
     <string name="about_tv_design_text">Designed at Faculty of Cybernetics, Statistics and Informatics</string>
+    <string name="gradebook_toast_no_grades">There are no grades for you!</string>
 
 </resources>

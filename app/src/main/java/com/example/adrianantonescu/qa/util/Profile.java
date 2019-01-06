@@ -18,6 +18,16 @@ public abstract class Profile {
 
     }
 
+    public Profile(Long id, String username, String password, String firstName, String lastName, String email, String bio) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.bio = bio;
+    }
+
     public Profile(String username, String password, String firstName, String lastName, String email, String bio) {
         this.username = username;
         this.password = password;

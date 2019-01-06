@@ -39,8 +39,8 @@ public class InitializeDbHelper {
 //        databaseRepository.insertDistribution(t1, c1);
 //        databaseRepository.insertDistribution(t2,c2);
 //        databaseRepository.insertDistribution(t2,c2);
-//        databaseRepository.insertStudentScore(stud1, c1, 80);
-//        databaseRepository.insertStudentScore(stud2, c2, 20);
+        databaseRepository.insertStudentScore(stud1, c1, 70);
+//        databaseRepository.insertStudentScore(stud2, c3, 60);
         databaseRepository.close();
 
     }
