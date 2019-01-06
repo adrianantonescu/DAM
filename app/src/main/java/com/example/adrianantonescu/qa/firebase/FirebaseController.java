@@ -48,7 +48,7 @@ public class FirebaseController implements FirebaseConstants{
         return firebaseController;
     }
 
-    public String upsertTeacher(final Teacher teacher) {
+    public String upsertTeacher(Teacher teacher) {
         if(teacher == null) {
             return null;
         }
@@ -110,7 +110,7 @@ public class FirebaseController implements FirebaseConstants{
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("FirebaseController", "Teacher is not saved");
+                Log.e("FirebaseController", "Student is not saved");
             }
         });
         return student.getGlobalId();
